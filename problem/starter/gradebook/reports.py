@@ -2,6 +2,8 @@
 
 # TODO: use a RELATIVE import to pull from the sibling stats module.
 # from .stats import average_per_student, subjects_offered, top_scorer, passing_students
+from .stats import average_per_student, subjects_offered, top_scorer, passing_students
+from .data import RECORDS
 
 
 def format_report(records: list[dict]) -> str:
@@ -16,4 +18,13 @@ def format_report(records: list[dict]) -> str:
       - The list of passing students (threshold 60.0)
     """
     # TODO: implement
-    pass
+    
+    report = ""
+
+    report += f"Total number of records: {len(records)}\n"
+    report += f"Subjects offered: {sorted(subjects_offered(records))}\n"
+    report += f"Average scores: {average_per_student(records)}\n"
+    report += f"Top scorer: {top_scorer(records)}\n"
+    report += f"Passing students: {passing_students(records)}\n"
+
+    return report
